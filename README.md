@@ -12,7 +12,7 @@ check_temper -w warning -c critical
 - Instalar plugin
 -- ```cd check_temper```
 -- ```chmod +x check_temper check_temper_install```
--- ```.\check_temper_install```
+-- ```./check_temper_install```
 
 # PCsensor USB Temper 
 USB Temper probados:
