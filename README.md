@@ -7,7 +7,7 @@ Plugin para control de temperatura mediante dispositivos USB Temper (pcsensor) p
 - warning: Valor en grados celsius para estado WARNING
 - critical: Valor en grados celsius para estado CRITICAL
 
-Nota: **check_temper** debe ser ejecutado con permisos de root para poder acceder al sensor USB
+Nota: **check_temper** debe ser ejecutado con permisos de ```root``` para poder acceder al sensor USB
 
 # Instalación
 
