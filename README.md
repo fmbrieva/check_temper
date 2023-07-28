@@ -17,6 +17,7 @@ Nota: **check_temper** debe ser ejecutado con permisos de root para poder accede
    - ```./check_temper_install```
  - Prueba plugin
    -  ```check_temper```
+     
          OK - Temperatura USB: 26.81C Sensor : 26.43C
  
 
