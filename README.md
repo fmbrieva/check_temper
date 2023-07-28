@@ -13,13 +13,13 @@ Nota: **check_temper** debe ser ejecutado con permisos de ```root``` para poder 
 
 - Descargar plugin ```git clone https://github.com/fmbrieva/check_temper```
 - Instalar plugin
-   - ```cd check_temper```
-   - ```chmod +x check_temper check_temper_install```
-   - ```./check_temper_install```
+   1. ```cd check_temper```
+   2. ```chmod +x check_temper check_temper_install```
+   3. ```./check_temper_install```
  - Prueba plugin
    -  ```check_temper```
-     
-         OK - Temperatura USB: 26.81C Sensor : 26.43C
+      Resultado:     
+         ```OK - Temperatura USB: 26.81C Sensor : 26.43C```
  
 
 # PCsensor USB Temper 
