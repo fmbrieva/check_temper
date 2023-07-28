@@ -6,6 +6,8 @@ check_temper -w warning -c critical
 - warning: Valor en grados celsius para estado WARNING
 - critical: Valor en grados celsius para estado CRITICAL
 
+Nota: **check_temper** debe ser ejecutado con permisos de root para poder acceder al sensor USB
+
 # Instalación
 
 - Descargar plugin ```git clone https://github.com/fmbrieva/check_temper```
