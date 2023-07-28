@@ -17,7 +17,7 @@
 #########################################################################################################
 
 apt update
-apt install libhidapi-dev cmake git
+apt install libhidapi-dev cmake git -y
 git clone https://github.com/edorfaus/TEMPered
 cd TEMPered
 cmake .
