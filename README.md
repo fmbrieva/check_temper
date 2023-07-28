@@ -4,7 +4,7 @@ Plugin para control de temperatura mediante dispositivos USB Temper (pcsensor) p
 check_temper -w warning -c critical
 
 - warning: Valor en grados celsius para estado WARNING
-- critial: Valor en grados celsius para estado CRITICAL
+- critical: Valor en grados celsius para estado CRITICAL
 
 # Instalación
 
