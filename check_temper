@@ -28,7 +28,7 @@ while getopts hw:c: option
 do
         case "${option}"
         in 
-		        h) echo;echo $COMANDO;echo;exit;;                
+		h) echo;echo $COMANDO;echo;exit;;                
                 w) warning=${OPTARG};;                
                 c) critical=${OPTARG};;                
         esac
@@ -43,7 +43,7 @@ function leerTemp() {
 
         if [[ $resultado = *[!\ ]* ]]; then
            temperatura=$(echo $resultado | awk '{print $1}')
-		   temperatura2=$(echo $resultado | awk '{print $2}')
+	   temperatura2=$(echo $resultado | awk '{print $2}')
         fi
 
     done;
@@ -52,10 +52,10 @@ function leerTemp() {
 
 leerTemp
 
-resultado="Temperatura USB: "$temperatura
+resultado="Temperatura USB: "$temperatura"C"
 
 if [[ $temperatura2 = *[!\ ]* ]]; then
-    resultado=$resultado" Sensor : "$temperatura2
+    resultado=$resultado" Sensor : "$temperatura2"C"
 fi
 
 if [[ $temperatura > $warning ]] ; then
