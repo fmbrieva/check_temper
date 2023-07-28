@@ -1,6 +1,7 @@
 # check_temper
 Plugin para control de temperatura mediante dispositivos USB Temper (pcsensor) para **Icinga** y **Nagios**
 
+# Comando
 ```check_temper -w warning -c critical```
 
 - warning: Valor en grados celsius para estado WARNING
