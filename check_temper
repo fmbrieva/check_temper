@@ -1,0 +1,73 @@
+#!/bin/bash
+#
+
+########################################################################################################
+# Autor:         Felipe Muñoz Brieva - fmbrieva@gmail.com                                              #
+# Version:       1.0                                                                                   #
+# Fecha:         26/07/2023                                                                            #
+# Descripcion:   Chequear temperatura mediante dispositivos Temper (pcsensor.com)                      #
+# Notas:         check_temper utiliza componentes del repositorio https://github.com/edorfaus/TEMPered #
+#                para instalar la utilidad hid-query. Reconocemos y agradecemos a los desarrolladores  #  
+#                su contribución al código abierto.                                                    #
+#                                                                                                      #
+#  check_temper uses components from the repository https://github.com/edorfaus/TEMPered to install    #
+#  hid-query utility. we acknowledge and are grateful to these developers for their contributions to   #
+#  open source.                                                                                        #
+#                                                                                                      #
+########################################################################################################
+
+COMANDO="uso: check_temp -w warning -c critical"
+
+warning=29
+critical=34
+
+estado="OK"
+exitCode=0
+
+while getopts hw:c: option
+do
+        case "${option}"
+        in 
+		        h) echo;echo $COMANDO;echo;exit;;                
+                w) warning=${OPTARG};;                
+                c) critical=${OPTARG};;                
+        esac
+done
+
+
+function leerTemp() {
+
+    for device in /dev/hidraw*; do
+
+        resultado=$(hid-query $device 0x01 0x80 0x33 0x01 0x00 0x00 0x00 0x00 2> /dev/null | grep -oP "80 (80|01) [0-9a-fA-F]* [0-9a-fA-F]*  " | gawk '{print strtonum( "0x"$3$4 )/100 " "}' | tr -d '\n')
+
+        if [[ $resultado = *[!\ ]* ]]; then
+           temperatura=$(echo $resultado | awk '{print $1}')
+		   temperatura2=$(echo $resultado | awk '{print $2}')
+        fi
+
+    done;
+  
+}
+
+leerTemp
+
+resultado="Temperatura USB: "$temperatura
+
+if [[ $temperatura2 = *[!\ ]* ]]; then
+    resultado=$resultado" Sensor : "$temperatura2
+fi
+
+if [[ $temperatura > $warning ]] ; then
+   estado="WARNING"
+   exitCode=1
+fi
+
+if [[ $temperatura > $critical ]]; then
+   estado="CRITICAL"
+   exitCode=2
+fi
+
+echo "$estado - $resultado"
+
+exit $exitCode

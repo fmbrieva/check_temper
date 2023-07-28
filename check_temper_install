@@ -1,0 +1,28 @@
+#!/bin/bash
+#
+
+#########################################################################################################
+# Autor:         Felipe Muñoz Brieva - fmbrieva@gmail.com                                               #
+# Version:       1.0                                                                                    #
+# Fecha:         26/07/2023                                                                             #
+# Descripcion:   Instalar requisitos para chek_temper (Chequeo temperatura mediante dispositivos Temper #
+# Notas:         check_temper utiliza componentes del repositorio https://github.com/edorfaus/TEMPered  #
+#                para instalar la utilidad hid-query. Reconocemos y agradecemos a los desarrolladores   #
+#                su contribución al código abierto.                                                     #
+#                                                                                                       #
+#  check_temper uses components from the repository https://github.com/edorfaus/TEMPered to install     #
+#  hid-query utility. we acknowledge and are grateful to these developers for their contributions to    #
+#  open source.                                                                                         #
+#                                                                                                       #
+#########################################################################################################
+
+apt update
+apt install libhidapi-dev cmake git
+git clone https://github.com/edorfaus/TEMPered
+cd TEMPered
+cmake .
+cd utils
+make
+cp hid-query /usr/local/bin
+cp check_temper /usr/local/bin
+
